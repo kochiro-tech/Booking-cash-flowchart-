@@ -142,12 +142,12 @@
         <div class="tag">Start</div>
         <div class="t">Yêu cầu hoàn tiền phát sinh</div>
       </div>
-      <div class="step-box lane-o2c" id="o-o2c-1" style="grid-row:3; grid-column:3;">
+      <div class="step-box lane-o2c" id="1.2" style="grid-row:3; grid-column:3;">
         <span class="num num-o2c">1.2</span>
         <div class="t">Tạo Payment Request trên ERP</div>
         <div class="s">O2C nhận thông tin, gửi lịch cho Controlling</div>
       </div>
-      <div class="step-box lane-o2c" id="o-o2c-2" style="grid-row:3; grid-column:7;">
+      <div class="step-box lane-o2c" id="4.2" style="grid-row:3; grid-column:7;">
         <span class="num num-o2c">4.2</span>
         <div class="t">Book Netsuite</div>
         <div class="s">Team O2C book, không qua R2R</div>
@@ -329,9 +329,9 @@ function renderAll(){
     {from:'o-r2r-1', to:'o-tr-2'},
     {from:'o-tr-2', to:'o-r2r-2'},
     {from:'o-r2r-2', to:'o-end-main'},
-    {from:'o-trig-exc', to:'o-o2c-1'},
-    {from:'o-o2c-1', to:'1.1', dashed:true},
-    {from:'o-o2c-2', to:'o-tr-2', dashed:true},
+    {from:'o-trig-exc', to:'1.1'},
+    {from:'1.2', to:'1.1', dashed:true},
+    {from:'1.2', to:'4.2', dashed:true},
   ]);
   drawConnectors('grid-cashin', 'conn-cashin', [
     {from:'i-trig-sale', to:'i-tr-sale'},
