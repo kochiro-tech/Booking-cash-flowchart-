@@ -97,7 +97,7 @@
       <div class="lane-label odd" style="grid-row:1;">Controlling team</div>
       <div class="lane-label" style="grid-row:2;">Treasury</div>
       <div class="lane-label odd" style="grid-row:3;">O2C</div>
-      <div class="lane-label" style="grid-row:4;">R2R Booking</div>
+      <div class="lane-label" style="grid-row:4;">R2R</div>
 
       <div class="step-box trigger" id="o-trig-main" style="grid-row:1; grid-column:2;">
         <div class="tag">Start</div>
@@ -179,7 +179,7 @@
       <div class="lane-label odd" style="grid-row:2;">Controlling team</div>
       <div class="lane-label" style="grid-row:3;">Treasury</div>
       <div class="lane-label odd" style="grid-row:4;">O2C</div>
-      <div class="lane-label" style="grid-row:5;">R2R Booking</div>
+      <div class="lane-label" style="grid-row:5;">R2R</div>
 
       <div class="group-header" style="grid-row:1; grid-column:2 / 7;">Doanh thu bán hàng</div>
       <div class="group-header" style="grid-row:1; grid-column:7 / 13;">Other cash in</div>
@@ -262,7 +262,7 @@
     <div class="legend-item"><span class="swatch" style="background:var(--blue-fill);border:1px solid var(--blue-line)"></span>Controlling team</div>
     <div class="legend-item"><span class="swatch" style="background:var(--teal-fill);border:1px solid var(--teal-line)"></span>Treasury</div>
     <div class="legend-item"><span class="swatch" style="background:var(--coral-fill);border:1px solid var(--coral-line)"></span>O2C</div>
-    <div class="legend-item"><span class="swatch" style="background:var(--purple-fill);border:1px solid var(--purple-line)"></span>R2R Booking</div>
+    <div class="legend-item"><span class="swatch" style="background:var(--purple-fill);border:1px solid var(--purple-line)"></span>R2R</div>
     <div class="legend-item">M/O/C/S/R + số = thứ tự bước, theo từng flow (Main, O2C hoàn tiền, Cash, Sale, Receipt)</div>
     <div class="legend-item">┈┈► nét đứt = dùng chung box với main flow</div>
   </div>
@@ -270,12 +270,12 @@
   <h2 class="section">Bảng thuật ngữ chuẩn</h2>
   <table>
     <tr><th>Thuật ngữ</th><th>Định nghĩa dùng chung trong flow</th></tr>
-    <tr><td>Controlling team</td><td>Team nghiệp vụ nhận nghĩa vụ thanh toán/thu, lập lịch (Payment/Receipt Schedule) gửi Treasury, và đối chiếu ERP–NetSuite trước khi gửi lịch cho R2R Booking.</td></tr>
+    <tr><td>Controlling team</td><td>Team nghiệp vụ nhận nghĩa vụ thanh toán/thu, lập lịch (Payment/Receipt Schedule) gửi Treasury, và đối chiếu ERP–NetSuite trước khi gửi lịch cho R2R.</td></tr>
     <tr><td>Treasury</td><td>Thực hiện giao dịch ngân hàng theo lịch nhận từ Controlling team; điền Bank + Payment/Receipt Date vào file và gửi lại Controlling team. Sau khi R2R import lên NetSuite, Treasury reconcile chung với sổ phụ ngân hàng — bao gồm cả khoản O2C book cho yêu cầu hoàn tiền, vì cùng nằm trên một sổ — rồi gửi email xác nhận cho R2R để đóng kỳ.</td></tr>
-    <tr><td>O2C</td><td>Sở hữu và book trực tiếp 2 trường hợp đặc thù, không qua R2R Booking: Cash Sale (Cash In) và yêu cầu hoàn tiền (Cash Out exception).</td></tr>
-    <tr><td>R2R Booking</td><td>Nhận lịch đã verify từ Controlling team, tạo file import lên NetSuite (NS); sau khi import xong, nhận xác nhận reconcile từ Treasury (đã gồm cả khoản O2C book) để đóng kỳ kế toán.</td></tr>
+    <tr><td>O2C</td><td>Sở hữu và book trực tiếp 2 trường hợp đặc thù, không qua R2R: Cash Sale (Cash In) và yêu cầu hoàn tiền (Cash Out exception).</td></tr>
+    <tr><td>R2R</td><td>Nhận lịch đã verify từ Controlling team, tạo file import lên NetSuite (NS); sau khi import xong, nhận xác nhận reconcile từ Treasury (đã gồm cả khoản O2C book) để đóng kỳ kế toán.</td></tr>
     <tr><td>ERP</td><td>Hệ thống vận hành nội bộ riêng của công ty; các phiếu/giao dịch được đẩy (API) từ ERP sang NetSuite để hạch toán.</td></tr>
-    <tr><td>NS (NetSuite)</td><td>Phần mềm kế toán chính của công ty; là hệ thống đích mà Controlling team đối chiếu và R2R Booking import file vào.</td></tr>
+    <tr><td>NS (NetSuite)</td><td>Phần mềm kế toán chính của công ty; là hệ thống đích mà Controlling team đối chiếu và R2R import file vào.</td></tr>
     <tr><td>Chi tiền mặt (exception)</td><td>Với YCTT chi tiền mặt trong lịch nhận từ Controlling team, Treasury gửi riêng lệnh đó cho R2R book trước trên NetSuite; R2R gửi phiếu lại để Treasury in và ký nhận với người tạo YCTT, giao tiền mặt ngay. Việc book trước không thay đổi việc phải reconcile sổ phụ &amp; đóng kỳ chung với main flow vào cuối tháng.</td></tr>
     <tr><td>Cash In — Doanh thu bán hàng</td><td>Treasury gửi file sổ phụ hàng ngày cho O2C đối chiếu với doanh thu cửa hàng; O2C book lên NetSuite theo tuần. Vẫn nằm chung sổ ngân hàng nên được Treasury reconcile chung với Other Cash In cuối tháng trước khi R2R đóng sổ.</td></tr>
     <tr><td>Cash In — Other cash in</td><td>Các khoản tiền vào ngoài doanh thu bán hàng. Cuối tháng Treasury tổng hợp qua Google Sheet, báo Controlling team kiểm tra từng khoản và fill đối tượng + tài khoản đối ứng; Treasury khóa link, báo R2R lấy file book lên NetSuite.</td></tr>
