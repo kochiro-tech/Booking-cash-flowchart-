@@ -37,7 +37,9 @@
   .lane-band{grid-column:1/-1; border-radius:7px; align-self:stretch;}
   .lane-band.odd{background:var(--band);}
   .lane-label{grid-column:1; display:flex; align-items:center; font-weight:600; font-size:11px;
-    color:var(--ink); padding:0 3px;}
+    color:var(--ink); padding:0 8px 0 3px;
+    position:sticky; left:0; z-index:6; background:var(--card); border-right:1px solid var(--line);}
+  .lane-label.odd{background:var(--band);}
   .group-header{display:flex; align-items:flex-end; font-size:10.5px; font-weight:600; color:var(--ink-soft);
     padding:0 3px 3px; border-bottom:1px solid var(--line);}
 
@@ -82,7 +84,7 @@
 <body>
 <div class="wrap">
   <h1>Booking Cash Process — Swimlane view</h1>
-  <p class="subtitle"></p>
+  <p class="subtitle">Mỗi lane là một team sở hữu bước xử lý, đánh số theo thứ tự xử lý trong từng flow. Cả 2 exception của Cash Out (hoàn tiền, chi tiền mặt) đều nhập lại vào bước Reconcile ngân hàng &amp; Đóng kỳ chung với main flow — chỉ có một điểm End duy nhất tại đó. Ở Cash In, cả 2 nguồn (doanh thu bán hàng và other cash in) cũng chỉ có một điểm End chung sau khi Treasury reconcile.</p>
 
   <h2 class="section">Cash out</h2>
   <div class="diagram-card">
@@ -92,9 +94,9 @@
       <div class="lane-band odd" style="grid-row:3;"></div>
       <div class="lane-band" style="grid-row:4;"></div>
 
-      <div class="lane-label" style="grid-row:1;">Controlling team</div>
+      <div class="lane-label odd" style="grid-row:1;">Controlling team</div>
       <div class="lane-label" style="grid-row:2;">Treasury</div>
-      <div class="lane-label" style="grid-row:3;">O2C</div>
+      <div class="lane-label odd" style="grid-row:3;">O2C</div>
       <div class="lane-label" style="grid-row:4;">R2R Booking</div>
 
       <div class="step-box trigger" id="o-trig-main" style="grid-row:1; grid-column:2;">
@@ -174,9 +176,9 @@
       <div class="lane-band odd" style="grid-row:4;"></div>
       <div class="lane-band" style="grid-row:5;"></div>
 
-      <div class="lane-label" style="grid-row:2;">Controlling team</div>
+      <div class="lane-label odd" style="grid-row:2;">Controlling team</div>
       <div class="lane-label" style="grid-row:3;">Treasury</div>
-      <div class="lane-label" style="grid-row:4;">O2C</div>
+      <div class="lane-label odd" style="grid-row:4;">O2C</div>
       <div class="lane-label" style="grid-row:5;">R2R Booking</div>
 
       <div class="group-header" style="grid-row:1; grid-column:2 / 7;">Doanh thu bán hàng</div>
