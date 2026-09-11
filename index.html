@@ -20,7 +20,7 @@
   .subtitle{font-size:13px; color:var(--ink-soft); margin:0 0 28px; line-height:1.6; max-width:700px;}
   h2.section{font-size:14px; font-weight:600; margin:0 0 12px;}
   .diagram-card{background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:18px 16px; margin-bottom:28px; overflow-x:auto;}
+    padding:26px 16px; margin-bottom:28px; overflow-x:auto;}
 
   .lanes-grid{
     position:relative; display:grid;
@@ -301,17 +301,12 @@ function drawConnectors(gridId, svgId, edges){
       const tx = b.left + b.width/2 - gr.left, tBottom = b.bottom - gr.top;
       const channelY = gr.height - 6;
       d = `M${sx} ${sBottom} V${channelY} H${tx} V${tBottom}`;
-    if (e.under) {
-  const sx = a.left + a.width/2 - gr.left, sBottom = a.bottom - gr.top;
-  const tx = b.left + b.width/2 - gr.left, tBottom = b.bottom - gr.top;
-  const channelY = gr.height - 6;
-  d = `M${sx} ${sBottom} V${channelY} H${tx} V${tBottom}`;
-} else if (e.over) {
-  const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
-  const tx = b.left + b.width/2 - gr.left, tTop = b.top - gr.top;
-  const channelY = -14;
-  d = `M${sx} ${sTop} V${channelY} H${tx} V${tTop}`;
-} else {
+    } else if (e.over) {
+      const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
+      const tx = b.left + b.width/2 - gr.left, tTop = b.top - gr.top;
+      const channelY = -14;
+      d = `M${sx} ${sTop} V${channelY} H${tx} V${tTop}`;
+    } else {
       const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
       const x2 = b.left - gr.left, y2 = b.top + b.height/2 - gr.top;
       const midX = (x1 + x2) / 2;
@@ -327,7 +322,7 @@ function renderAll(){
   drawConnectors('grid-out', 'conn-out', [
     {from:'o-trig-main', to:'1.1'},
     {from:'1.1', to:'2.1'},
-    {from:'2.1', to:'3',over:true},
+    {from:'2.1', to:'3', over:true},
     {from:'3', to:'o-r2r-1'},
     {from:'o-r2r-1', to:'o-tr-2'},
     {from:'o-tr-2', to:'o-r2r-2'},
