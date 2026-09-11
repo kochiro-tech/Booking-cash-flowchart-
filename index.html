@@ -84,7 +84,7 @@
 <body>
 <div class="wrap">
   <h1>Booking Cash Process — Swimlane view</h1>
-  <p class="subtitle">Mỗi lane là một team sở hữu bước xử lý, đánh số theo thứ tự xử lý trong từng flow. Cả 2 exception của Cash Out (hoàn tiền, chi tiền mặt) đều nhập lại vào bước Reconcile ngân hàng &amp; Đóng kỳ chung với main flow — chỉ có một điểm End duy nhất tại đó. Ở Cash In, cả 2 nguồn (doanh thu bán hàng và other cash in) cũng chỉ có một điểm End chung sau khi Treasury reconcile.</p>
+  <p class="subtitle"></p>
 
   <h2 class="section">Cash out</h2>
   <div class="diagram-card">
@@ -153,9 +153,9 @@
         <div class="s">Team O2C book, không qua R2R</div>
       </div>
 
-      <div class="step-box lane-r2r" id="o-r2r-cash" style="grid-row:4; grid-column:5;">
+      <div class="step-box lane-r2r" id="o-r2r-cash" style="grid-row:4; grid-column:4;">
         <span class="num num-r2r">2.2</span>
-        <div class="t">Book NS</div>
+        <div class="t">Tạo phiếu trên NetSuite</div>
         <div class="s">Cho YCTT chi tiền mặt, gửi phiếu lại Treasury</div>
       </div>
       <div class="step-box lane-tr" id="o-tr-cash" style="grid-row:2; grid-column:7;">
