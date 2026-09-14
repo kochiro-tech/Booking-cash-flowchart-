@@ -190,13 +190,13 @@
         <div class="t">Doanh thu bán hàng phát sinh</div>
         <div class="s">Tại cửa hàng</div>
       </div>
-      <div class="step-box lane-tr" id="i-tr-sale" style="grid-row:3; grid-column:3;">
-        <span class="num num-tr">S1</span>
+      <div class="step-box lane-tr" id="1" style="grid-row:3; grid-column:3;">
+        <span class="num num-tr">1</span>
         <div class="t">Gửi file sổ phụ hàng ngày</div>
         <div class="s">Cho O2C đối chiếu doanh thu</div>
       </div>
-      <div class="step-box lane-o2c" id="i-o2c-1" style="grid-row:4; grid-column:4;">
-        <span class="num num-o2c">S2</span>
+      <div class="step-box lane-o2c" id="2" style="grid-row:4; grid-column:4;">
+        <span class="2">S2</span>
         <div class="t">Đối chiếu doanh thu cửa hàng</div>
         <div class="s">Hàng ngày, theo file sổ phụ</div>
       </div>
@@ -334,9 +334,9 @@ function renderAll(){
     {from:'2.1', to:'4.2', dashed:true},
   ]);
   drawConnectors('grid-cashin', 'conn-cashin', [
-    {from:'i-trig-sale', to:'i-tr-sale'},
-    {from:'i-tr-sale', to:'i-o2c-1'},
-    {from:'i-o2c-1', to:'i-o2c-2'},
+    {from:'i-trig-sale', to:'1'},
+    {from:'1', to:'2'},
+    {from:'2', to:'i-o2c-2'},
     {from:'i-o2c-2', to:'i-tr-3', dashed:true, under:true},
     {from:'i-trig-other', to:'i-tr-1'},
     {from:'i-tr-1', to:'i-ct-1'},
