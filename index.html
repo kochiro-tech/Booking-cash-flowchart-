@@ -196,12 +196,12 @@
         <div class="s">Cho O2C đối chiếu doanh thu</div>
       </div>
       <div class="step-box lane-o2c" id="2" style="grid-row:4; grid-column:4;">
-        <span class="2">S2</span>
+        <span class="2">2</span>
         <div class="t">Đối chiếu doanh thu cửa hàng</div>
         <div class="s">Hàng ngày, theo file sổ phụ</div>
       </div>
       <div class="step-box lane-o2c" id="i-o2c-2" style="grid-row:4; grid-column:5;">
-        <span class="num num-o2c">S3</span>
+        <span class="num num-o2c">3</span>
         <div class="t">Book lên NS</div>
         <div class="s">Hàng tuần, ghi nhận doanh thu</div>
       </div>
@@ -336,8 +336,8 @@ function renderAll(){
   drawConnectors('grid-cashin', 'conn-cashin', [
     {from:'i-trig-sale', to:'1'},
     {from:'1', to:'2',under:true},
-    {from:'2', to:'i-o2c-2'},
-    {from:'i-o2c-2', to:'i-tr-3', dashed:true, under:true},
+    {from:'2', to:'3'},
+    {from:'3', to:'i-tr-3', dashed:true, under:true},
     {from:'i-trig-other', to:'i-tr-1'},
     {from:'i-tr-1', to:'i-ct-1'},
     {from:'i-ct-1', to:'i-ct-2'},
