@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>BOOKING CASH SOP</title>
+<title>Booking Cash Process – Swimlane</title>
 <style>
   :root{
     --ink:#26241f; --ink-soft:#5c594e; --line:#d8d4c8; --bg:#faf8f3; --card:#ffffff; --band:#f2efe6;
@@ -80,10 +80,10 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>BOOKING CASH SOP</h1>
+  <h1>Booking Cash Process — Swimlane view</h1>
   <p class="subtitle"></p>
 
-  <h2 class="section">AS-IS</h2>
+  <h2 class="section">Luồng xử lý (Cash Out + Cash In)</h2>
   <div class="diagram-card">
     <div class="lanes-grid" id="grid-all">
       <div class="lane-band odd" style="grid-row:1;"></div>
@@ -268,6 +268,11 @@ function drawConnectors(gridId, svgId, edges){
       const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
       const tx = b.left - gr.left, ty = b.top + b.height/2 - gr.top;
       d = `M${sx} ${sTop} V${ty} H${tx}`;
+    } else if (e.upBottom) {
+      const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
+      const bx = b.left + b.width/2 - gr.left, bBottom = b.bottom - gr.top;
+      const midY = bBottom + (sTop - bBottom) / 2;
+      d = `M${sx} ${sTop} V${midY} H${bx} V${bBottom}`;
     } else {
       const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
       const x2 = b.left - gr.left, y2 = b.top + b.height/2 - gr.top;
@@ -292,7 +297,7 @@ function renderAll(){
     {from:'o-tr-2', to:'o-r2r-2'},
     {from:'o-r2r-2', to:'o-end-main'},
     {from:'o-trig-exc', to:'O1', dashed:true},
-    {from:'O1', to:'M1', dashed:true},
+    {from:'O1', to:'M1', upBottom:true, dashed:true},
     {from:'O1', to:'O2', dashed:true},
     {from:'O2', to:'o-tr-2', topLeft:true, dashed:true},
     {from:'i-trig-sale', to:'S1'},
