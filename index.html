@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Booking Cash Process – Swimlane</title>
+<title>Booking Cash SOP</title>
 <style>
   :root{
     --ink:#26241f; --ink-soft:#5c594e; --line:#d8d4c8; --bg:#faf8f3; --card:#ffffff; --band:#f2efe6;
@@ -80,10 +80,10 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Booking Cash Process — Swimlane view</h1>
+  <h1>Booking Cash SOP</h1>
   <p class="subtitle"></p>
 
-  <h2 class="section">Luồng xử lý (Cash Out + Cash In)</h2>
+  <h2 class="section">AS-IS</h2>
   <div class="diagram-card">
     <div class="lanes-grid" id="grid-all">
       <div class="lane-band odd" style="grid-row:1;"></div>
@@ -211,6 +211,135 @@
     </div>
   </div>
 
+
+  <h2 class="section">TO-BE</h2>
+  <div class="diagram-card">
+    <div class="lanes-grid" id="tb-grid-tobe">
+      <div class="lane-band odd" style="grid-row:1;"></div>
+      <div class="lane-band" style="grid-row:2;"></div>
+      <div class="lane-band odd" style="grid-row:3;"></div>
+      <div class="lane-band" style="grid-row:4;"></div>
+      <div class="lane-band odd" style="grid-row:5;"></div>
+      <div class="lane-band" style="grid-row:6;"></div>
+      <div class="lane-band odd" style="grid-row:7;"></div>
+
+      <div class="group-label odd" style="grid-row:1 / 5;">Cash Out</div>
+      <div class="group-label odd" style="grid-row:5 / 8;">Cash In</div>
+
+      <div class="lane-label odd" style="grid-row:1;">Controlling team</div>
+      <div class="lane-label" style="grid-row:2;">Treasury</div>
+      <div class="lane-label odd" style="grid-row:3;">O2C</div>
+      <div class="lane-label" style="grid-row:4;">R2R</div>
+      <div class="lane-label odd" style="grid-row:5;">Controlling team</div>
+      <div class="lane-label" style="grid-row:6;">Treasury</div>
+      <div class="lane-label odd" style="grid-row:7;">O2C</div>
+
+      <div class="step-box trigger" id="tb-o-trig-main" style="grid-row:1; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Nghĩa vụ thanh toán phát sinh</div>
+      </div>
+      <div class="step-box lane-ct" id="tb-M1" style="grid-row:1; grid-column:4;">
+        <span class="num num-ct">M1</span>
+        <div class="t">Lập Payment Schedule</div>
+        <div class="s">Gửi Treasury qua email</div>
+      </div>
+      <div class="step-box lane-tr" id="tb-M2" style="grid-row:2; grid-column:5;">
+        <span class="num num-tr">M2</span>
+        <div class="t">Thanh toán</div>
+        <div class="s">Cập nhật Bank &amp; Payment Date, gửi lại Controlling</div>
+      </div>
+      <div class="step-box lane-ct" id="tb-M3" style="grid-row:1; grid-column:6;">
+        <span class="num num-ct">M3</span>
+        <div class="t">Check API Status</div>
+        <div class="s">Xác nhận các phiếu đã API đầy đủ</div>
+      </div>
+      <div class="step-box lane-r2r" id="tb-M4" style="grid-row:4; grid-column:8;">
+        <span class="num num-r2r">M4</span>
+        <div class="t">Import lên NetSuite</div>
+        <div class="s">Dùng chung cho Cash Out &amp; Cash In: kiểm tra lịch/file, tạo file import</div>
+      </div>
+      <div class="step-box lane-r2r" id="tb-o-tr-2" style="grid-row:4; grid-column:9;">
+        <span class="num num-tr">M5</span>
+        <div class="t">Reconcile ngân hàng</div>
+        <div class="s">R2R phụ trách đối chiếu sổ phụ sau khi import NS (thay vì Treasury)</div>
+      </div>
+      <div class="step-box lane-r2r" id="tb-o-r2r-2" style="grid-row:4; grid-column:10;">
+        <span class="num num-r2r">M6</span>
+        <div class="t">Đóng kỳ kế toán</div>
+        <div class="s">Nhận email xác nhận khớp từ Treasury</div>
+      </div>
+      <div class="step-box endpoint-end" id="tb-o-end-main" style="grid-row:4; grid-column:11;">
+        <div class="tag">End</div>
+        <div class="t">Kết thúc</div>
+      </div>
+
+      <div class="step-box trigger" id="tb-o-trig-exc" style="grid-row:3; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Yêu cầu hoàn tiền phát sinh</div>
+      </div>
+      <div class="step-box lane-o2c" id="tb-O1" style="grid-row:3; grid-column:4;">
+        <span class="num num-o2c">O1</span>
+        <div class="t">Tạo Payment Request trên ERP</div>
+        <div class="s">O2C nhận thông tin, gửi lịch cho Controlling</div>
+      </div>
+      <div class="step-box lane-o2c" id="tb-O2" style="grid-row:3; grid-column:7;">
+        <span class="num num-o2c">O2</span>
+        <div class="t">Book Netsuite</div>
+        <div class="s">Team O2C book, không qua R2R</div>
+      </div>
+
+      <div class="step-box lane-r2r" id="tb-C1" style="grid-row:4; grid-column:5;">
+        <span class="num num-r2r">C1</span>
+        <div class="t">Tạo phiếu trên NetSuite</div>
+        <div class="s">Cho YCTT chi tiền mặt, gửi phiếu lại Treasury</div>
+      </div>
+      <div class="step-box lane-tr" id="tb-C2" style="grid-row:2; grid-column:6;">
+        <span class="num num-tr">C2</span>
+        <div class="t">In phiếu &amp; ký nhận</div>
+        <div class="s">Ký giữa Treasury và người tạo YCTT, giao tiền mặt</div>
+      </div>
+
+      <div class="step-box trigger" id="tb-i-trig-sale" style="grid-row:6; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Doanh thu bán hàng phát sinh</div>
+        <div class="s">Tại cửa hàng</div>
+      </div>
+      <div class="step-box lane-tr" id="tb-S1" style="grid-row:6; grid-column:4;">
+        <span class="num num-tr">S1</span>
+        <div class="t">Gửi file sổ phụ hàng ngày</div>
+        <div class="s">Cho O2C đối chiếu doanh thu</div>
+      </div>
+      <div class="step-box lane-o2c" id="tb-S2" style="grid-row:7; grid-column:5;">
+        <span class="num num-o2c">S2</span>
+        <div class="t">Đối chiếu doanh thu cửa hàng</div>
+        <div class="s">Hàng ngày, theo file sổ phụ</div>
+      </div>
+      <div class="step-box lane-o2c" id="tb-S3" style="grid-row:7; grid-column:6;">
+        <span class="num num-o2c">S3</span>
+        <div class="t">Book lên NS</div>
+        <div class="s">O2C tự book, không qua R2R</div>
+      </div>
+
+      <div class="step-box trigger" id="tb-i-trig-other" style="grid-row:5; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Giao dịch tiền vào</div>
+        <div class="s">Ngoài doanh thu bán hàng</div>
+      </div>
+      <div class="step-box lane-tr" id="tb-R1" style="grid-row:6; grid-column:6;">
+        <span class="num num-tr">R1</span>
+        <div class="t">Gửi Google Sheet cuối tháng</div>
+        <div class="s">Gồm các giao dịch, báo các team</div>
+      </div>
+      <div class="step-box lane-ct" id="tb-R2" style="grid-row:5; grid-column:7;">
+        <span class="num num-ct">R2</span>
+        <div class="t">Fill đối tượng &amp; TK đối ứng</div>
+        <div class="s">Điền trên Google Sheet</div>
+      </div>
+
+      <svg class="connectors" id="tb-conn-tobe"></svg>
+    </div>
+  </div>
+
   <div class="legend">
     <div class="legend-item"><span class="swatch" style="background:var(--gray-fill);border:1px dashed var(--gray-line)"></span>Start (điểm phát sinh)</div>
     <div class="legend-item"><span class="swatch" style="background:var(--gray-fill);border:1px solid var(--gray-line)"></span>End (kết thúc flow)</div>
@@ -307,6 +436,28 @@ function renderAll(){
     {from:'i-trig-other', to:'R1', toTop:true},
     {from:'R1', to:'R2', rightUnder:true},
     {from:'R2', to:'M4', rightUnder:true},
+  ]);
+  drawConnectors('grid-tobe', 'conn-tobe', [
+    {from:'tb-o-trig-main', to:'tb-M1'},
+    {from:'tb-M1', to:'tb-M2'},
+    {from:'tb-M2', to:'tb-M3', over:true},
+    {from:'tb-M2', to:'tb-C1', downTop:true, dashed:true},
+    {from:'tb-C1', to:'tb-C2', rightUnder:true, dashed:true},
+    {from:'tb-M3', to:'tb-M4', toTop:true},
+    {from:'tb-M4', to:'tb-o-tr-2'},
+    {from:'tb-o-tr-2', to:'tb-o-r2r-2'},
+    {from:'tb-o-r2r-2', to:'tb-o-end-main'},
+    {from:'tb-o-trig-exc', to:'tb-O1', dashed:true},
+    {from:'tb-O1', to:'tb-M1', upBottom:true, dashed:true},
+    {from:'tb-O1', to:'tb-O2', dashed:true},
+    {from:'tb-O2', to:'tb-o-tr-2', topLeft:true, dashed:true},
+    {from:'tb-i-trig-sale', to:'tb-S1'},
+    {from:'tb-S1', to:'tb-S2'},
+    {from:'tb-S2', to:'tb-S3'},
+    {from:'tb-S3', to:'tb-o-tr-2', rightUnder:true},
+    {from:'tb-i-trig-other', to:'tb-R1', toTop:true},
+    {from:'tb-R1', to:'tb-R2', rightUnder:true},
+    {from:'tb-R2', to:'tb-M4', rightUnder:true},
   ]);
 }
 
