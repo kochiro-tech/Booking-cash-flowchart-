@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Booking Cash Process – Swimlane</title>
+<title>BOOKING CASH SOP</title>
 <style>
   :root{
     --ink:#26241f; --ink-soft:#5c594e; --line:#d8d4c8; --bg:#faf8f3; --card:#ffffff; --band:#f2efe6;
@@ -24,24 +24,21 @@
 
   .lanes-grid{
     position:relative; display:grid;
-    grid-template-columns: 105px 115px repeat(8, 105px);
+    grid-template-columns: 42px 105px 115px repeat(8, 105px);
     grid-auto-rows: minmax(60px, auto);
     row-gap:16px; column-gap:8px;
-    min-width:1200px;
-  }
-  .lanes-grid.grid-cashin{
-    grid-template-columns: 105px repeat(14, 108px);
-    grid-template-rows: 22px repeat(4, minmax(60px, auto)) 26px;
-    min-width:1980px;
+    min-width:1240px;
   }
   .lane-band{grid-column:1/-1; border-radius:7px; align-self:stretch;}
   .lane-band.odd{background:var(--band);}
-  .lane-label{grid-column:1; display:flex; align-items:center; font-weight:600; font-size:9px;
+  .lane-label{grid-column:2; display:flex; align-items:center; font-weight:600; font-size:9px;
     color:var(--ink); padding:0 8px 0 3px;
-    position:sticky; left:0; z-index:6; background:var(--card); border-right:1px solid var(--line);}
+    position:sticky; left:42px; z-index:6; background:var(--card); border-right:1px solid var(--line);}
   .lane-label.odd{background:var(--band);}
-  .group-header{display:flex; align-items:flex-end; font-size:9px; font-weight:600; color:var(--ink-soft);
-    padding:0 3px 3px; border-bottom:1px solid var(--line);}
+  .group-label{grid-column:1; display:flex; align-items:center; justify-content:center; text-align:center;
+    font-weight:700; font-size:8.5px; color:var(--ink-soft); line-height:1.2; padding:2px;
+    position:sticky; left:0; z-index:7; background:var(--card); border-right:1px solid var(--line);}
+  .group-label.odd{background:var(--band);}
 
   .step-box{border-radius:8px; padding:9px 6px 4px 6px; display:flex; flex-direction:column; justify-content:center;
     gap:1px; border:1px solid; align-self:center; position:relative; z-index:2;}
@@ -83,176 +80,134 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Booking Cash Process — Swimlane view</h1>
+  <h1>BOOKING CASH SOP</h1>
   <p class="subtitle"></p>
 
-  <h2 class="section">Cash out</h2>
+  <h2 class="section">AS-IS</h2>
   <div class="diagram-card">
-    <div class="lanes-grid" id="grid-out">
+    <div class="lanes-grid" id="grid-all">
       <div class="lane-band odd" style="grid-row:1;"></div>
-      <div class="lane-band" style="grid-row:2 / 4;"></div>
-      <div class="lane-band odd" style="grid-row:4;"></div>
-      <div class="lane-band" style="grid-row:5;"></div>
+      <div class="lane-band" style="grid-row:2;"></div>
+      <div class="lane-band odd" style="grid-row:3;"></div>
+      <div class="lane-band" style="grid-row:4;"></div>
+      <div class="lane-band odd" style="grid-row:5;"></div>
+      <div class="lane-band" style="grid-row:6;"></div>
+      <div class="lane-band odd" style="grid-row:7;"></div>
+
+      <div class="group-label odd" style="grid-row:1 / 5;">Cash Out</div>
+      <div class="group-label odd" style="grid-row:5 / 8;">Cash In</div>
 
       <div class="lane-label odd" style="grid-row:1;">Controlling team</div>
-      <div class="lane-label" style="grid-row:2 / 4;">Treasury</div>
-      <div class="lane-label odd" style="grid-row:4;">O2C</div>
-      <div class="lane-label" style="grid-row:5;">R2R</div>
+      <div class="lane-label" style="grid-row:2;">Treasury</div>
+      <div class="lane-label odd" style="grid-row:3;">O2C</div>
+      <div class="lane-label" style="grid-row:4;">R2R</div>
+      <div class="lane-label odd" style="grid-row:5;">Controlling team</div>
+      <div class="lane-label" style="grid-row:6;">Treasury</div>
+      <div class="lane-label odd" style="grid-row:7;">O2C</div>
 
-      <div class="step-box trigger" id="o-trig-main" style="grid-row:1; grid-column:2;">
+      <div class="step-box trigger" id="o-trig-main" style="grid-row:1; grid-column:3;">
         <div class="tag">Start</div>
         <div class="t">Nghĩa vụ thanh toán phát sinh</div>
       </div>
-      <div class="step-box lane-ct" id="1.1" style="grid-row:1; grid-column:3;">
-        <span class="num num-ct">1.1</span>
+      <div class="step-box lane-ct" id="M1" style="grid-row:1; grid-column:4;">
+        <span class="num num-ct">M1</span>
         <div class="t">Lập Payment Schedule</div>
         <div class="s">Gửi Treasury qua email</div>
       </div>
-      <div class="step-box lane-tr" id="2.1" style="grid-row:2; grid-column:4;">
-        <span class="num num-tr">2.1</span>
+      <div class="step-box lane-tr" id="M2" style="grid-row:2; grid-column:5;">
+        <span class="num num-tr">M2</span>
         <div class="t">Thanh toán</div>
         <div class="s">Cập nhật Bank &amp; Payment Date, gửi lại Controlling</div>
       </div>
-      <div class="step-box lane-ct" id="3" style="grid-row:1; grid-column:6;">
-        <span class="num num-ct">3</span>
+      <div class="step-box lane-ct" id="M3" style="grid-row:1; grid-column:6;">
+        <span class="num num-ct">M3</span>
         <div class="t">Check API Status</div>
         <div class="s">Xác nhận các phiếu đã API đầy đủ</div>
       </div>
-      <div class="step-box lane-r2r" id="o-r2r-1" style="grid-row:5; grid-column:6;">
-        <span class="num num-r2r">4.1</span>
+      <div class="step-box lane-r2r" id="M4" style="grid-row:4; grid-column:8;">
+        <span class="num num-r2r">M4</span>
         <div class="t">Import lên NetSuite</div>
-        <div class="s">Kiểm tra lịch, tạo file import</div>
+        <div class="s">Dùng chung cho Cash Out &amp; Cash In: kiểm tra lịch/file, tạo file import</div>
       </div>
       <div class="step-box lane-tr" id="o-tr-2" style="grid-row:2; grid-column:9;">
-        <span class="num num-tr">5</span>
+        <span class="num num-tr">M5</span>
         <div class="t">Reconcile ngân hàng</div>
         <div class="s">Đối chiếu sổ phụ sau khi import NS</div>
       </div>
-      <div class="step-box lane-r2r" id="o-r2r-2" style="grid-row:5; grid-column:9;">
-        <span class="num num-r2r">6</span>
+      <div class="step-box lane-r2r" id="o-r2r-2" style="grid-row:4; grid-column:10;">
+        <span class="num num-r2r">M6</span>
         <div class="t">Đóng kỳ kế toán</div>
         <div class="s">Nhận email xác nhận khớp từ Treasury</div>
       </div>
-      <div class="step-box endpoint-end" id="o-end-main" style="grid-row:5; grid-column:10;">
-        <div class="tag">End</div>
-        <div class="t">Kết thúc Cash Out</div>
-      </div>
-
-      <div class="step-box trigger" id="o-trig-exc" style="grid-row:4; grid-column:2;">
-        <div class="tag">Start</div>
-        <div class="t">Yêu cầu hoàn tiền phát sinh</div>
-      </div>
-      <div class="step-box lane-o2c" id="1.2" style="grid-row:4; grid-column:3;">
-        <span class="num num-o2c">1.2</span>
-        <div class="t">Tạo Payment Request trên ERP</div>
-        <div class="s">O2C nhận thông tin, gửi lịch cho Controlling</div>
-      </div>
-      <div class="step-box lane-o2c" id="4.2" style="grid-row:4; grid-column:7;">
-        <span class="num num-o2c">4.2</span>
-        <div class="t">Book Netsuite</div>
-        <div class="s">Team O2C book, không qua R2R</div>
-      </div>
-
-      <div class="step-box lane-r2r" id="2.2" style="grid-row:5; grid-column:4;">
-        <span class="num num-r2r">2.2</span>
-        <div class="t">Tạo phiếu trên NetSuite</div>
-        <div class="s">Cho YCTT chi tiền mặt, gửi phiếu lại Treasury</div>
-      </div>
-      <div class="step-box lane-tr" id="2.3" style="grid-row:3; grid-column:5;">
-        <span class="num num-tr">2.3</span>
-        <div class="t">In phiếu &amp; ký nhận</div>
-        <div class="s">Ký giữa Treasury và người tạo YCTT, giao tiền mặt</div>
-      </div>
-
-      <svg class="connectors" id="conn-out"></svg>
-    </div>
-  </div>
-
-  <h2 class="section">Cash in</h2>
-  <div class="diagram-card">
-    <div class="lanes-grid grid-cashin" id="grid-cashin">
-      <div class="lane-band odd" style="grid-row:2;"></div>
-      <div class="lane-band" style="grid-row:3;"></div>
-      <div class="lane-band odd" style="grid-row:4;"></div>
-      <div class="lane-band" style="grid-row:5;"></div>
-
-      <div class="lane-label odd" style="grid-row:2;">Controlling team</div>
-      <div class="lane-label" style="grid-row:3;">Treasury</div>
-      <div class="lane-label odd" style="grid-row:4;">O2C</div>
-      <div class="lane-label" style="grid-row:5;">R2R</div>
-
-      <div class="group-header" style="grid-row:1; grid-column:2 / 7;">Doanh thu bán hàng</div>
-      <div class="group-header" style="grid-row:1; grid-column:7 / 13;">Other cash in</div>
-      <div class="group-header" style="grid-row:1; grid-column:13 / 16;">Chung, cuối tháng</div>
-
-      <div class="step-box trigger" id="i-trig-sale" style="grid-row:3; grid-column:2;">
-        <div class="tag">Start</div>
-        <div class="t">Doanh thu bán hàng phát sinh</div>
-        <div class="s">Tại cửa hàng</div>
-      </div>
-      <div class="step-box lane-tr" id="1" style="grid-row:3; grid-column:3;">
-        <span class="num num-tr">1</span>
-        <div class="t">Gửi file sổ phụ hàng ngày</div>
-        <div class="s">Cho O2C đối chiếu doanh thu</div>
-      </div>
-      <div class="step-box lane-o2c" id="2" style="grid-row:4; grid-column:4;">
-        <span class="num num-o2c">2</span>
-        <div class="t">Đối chiếu doanh thu cửa hàng</div>
-        <div class="s">Hàng ngày, theo file sổ phụ</div>
-      </div>
-      <div class="step-box lane-o2c" id="cin-3" style="grid-row:4; grid-column:5;">
-        <span class="num num-o2c">3</span>
-        <div class="t">Book lên NS</div>
-        <div class="s">Hàng tuần, ghi nhận doanh thu</div>
-      </div>
-
-      <div class="step-box trigger" id="i-trig-other" style="grid-row:2; grid-column:2;">
-        <div class="tag">Start</div>
-        <div class="t">Giao dịch tiền vào</div>
-        <div class="s">Ngoài doanh thu bán hàng</div>
-      </div>
-      <div class="step-box lane-tr" id="i-tr-1" style="grid-row:3; grid-column:5;">
-        <span class="num num-tr">R1</span>
-        <div class="t">Gửi Google Sheet cuối tháng</div>
-        <div class="s">Gồm các giao dịch, báo các team</div>
-      </div>
-      <div class="step-box lane-ct" id="i-ct-1" style="grid-row:2; grid-column:9;">
-        <span class="num num-ct">R2</span>
-        <div class="t">Kiểm tra từng khoản</div>
-        <div class="s">Xác định nội dung giao dịch</div>
-      </div>
-      <div class="step-box lane-ct" id="i-ct-2" style="grid-row:2; grid-column:10;">
-        <span class="num num-ct">R3</span>
-        <div class="t">Fill đối tượng &amp; TK đối ứng</div>
-        <div class="s">Điền trên Google Sheet</div>
-      </div>
-      <div class="step-box lane-tr" id="i-tr-2" style="grid-row:3; grid-column:11;">
-        <span class="num num-tr">R4</span>
-        <div class="t">Khóa link &amp; báo R2R</div>
-        <div class="s">Sau khi Controlling hoàn tất</div>
-      </div>
-      <div class="step-box lane-r2r" id="i-r2r-1" style="grid-row:5; grid-column:12;">
-        <span class="num num-r2r">R5</span>
-        <div class="t">Lấy file &amp; book lên NS</div>
-        <div class="s">Ghi nhận Cash In</div>
-      </div>
-
-      <div class="step-box lane-tr" id="i-tr-3" style="grid-row:3; grid-column:13;">
-        <span class="num num-tr">R6</span>
-        <div class="t">Reconcile sổ phụ</div>
-        <div class="s">Đối chiếu chung cả 2 nguồn Cash In</div>
-      </div>
-      <div class="step-box lane-r2r" id="i-r2r-2" style="grid-row:5; grid-column:14;">
-        <span class="num num-r2r">R7</span>
-        <div class="t">Đóng sổ</div>
-        <div class="s">Nhận xác nhận khớp từ Treasury</div>
-      </div>
-      <div class="step-box endpoint-end" id="i-end-cashin" style="grid-row:5; grid-column:15;">
+      <div class="step-box endpoint-end" id="o-end-main" style="grid-row:4; grid-column:11;">
         <div class="tag">End</div>
         <div class="t">Kết thúc</div>
       </div>
 
-      <svg class="connectors" id="conn-cashin"></svg>
+      <div class="step-box trigger" id="o-trig-exc" style="grid-row:3; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Yêu cầu hoàn tiền phát sinh</div>
+      </div>
+      <div class="step-box lane-o2c" id="O1" style="grid-row:3; grid-column:4;">
+        <span class="num num-o2c">O1</span>
+        <div class="t">Tạo Payment Request trên ERP</div>
+        <div class="s">O2C nhận thông tin, gửi lịch cho Controlling</div>
+      </div>
+      <div class="step-box lane-o2c" id="O2" style="grid-row:3; grid-column:7;">
+        <span class="num num-o2c">O2</span>
+        <div class="t">Book Netsuite</div>
+        <div class="s">Team O2C book, không qua R2R</div>
+      </div>
+
+      <div class="step-box lane-r2r" id="C1" style="grid-row:4; grid-column:5;">
+        <span class="num num-r2r">C1</span>
+        <div class="t">Tạo phiếu trên NetSuite</div>
+        <div class="s">Cho YCTT chi tiền mặt, gửi phiếu lại Treasury</div>
+      </div>
+      <div class="step-box lane-tr" id="C2" style="grid-row:2; grid-column:6;">
+        <span class="num num-tr">C2</span>
+        <div class="t">In phiếu &amp; ký nhận</div>
+        <div class="s">Ký giữa Treasury và người tạo YCTT, giao tiền mặt</div>
+      </div>
+
+      <div class="step-box trigger" id="i-trig-sale" style="grid-row:6; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Doanh thu bán hàng phát sinh</div>
+        <div class="s">Tại cửa hàng</div>
+      </div>
+      <div class="step-box lane-tr" id="S1" style="grid-row:6; grid-column:4;">
+        <span class="num num-tr">S1</span>
+        <div class="t">Gửi file sổ phụ hàng ngày</div>
+        <div class="s">Cho O2C đối chiếu doanh thu</div>
+      </div>
+      <div class="step-box lane-o2c" id="S2" style="grid-row:7; grid-column:5;">
+        <span class="num num-o2c">S2</span>
+        <div class="t">Đối chiếu doanh thu cửa hàng</div>
+        <div class="s">Hàng ngày, theo file sổ phụ</div>
+      </div>
+      <div class="step-box lane-o2c" id="S3" style="grid-row:7; grid-column:6;">
+        <span class="num num-o2c">S3</span>
+        <div class="t">Book lên NS</div>
+        <div class="s">O2C tự book, không qua R2R</div>
+      </div>
+
+      <div class="step-box trigger" id="i-trig-other" style="grid-row:5; grid-column:3;">
+        <div class="tag">Start</div>
+        <div class="t">Giao dịch tiền vào</div>
+        <div class="s">Ngoài doanh thu bán hàng</div>
+      </div>
+      <div class="step-box lane-tr" id="R1" style="grid-row:6; grid-column:6;">
+        <span class="num num-tr">R1</span>
+        <div class="t">Gửi Google Sheet cuối tháng</div>
+        <div class="s">Gồm các giao dịch, báo các team</div>
+      </div>
+      <div class="step-box lane-ct" id="R2" style="grid-row:5; grid-column:7;">
+        <span class="num num-ct">R2</span>
+        <div class="t">Fill đối tượng &amp; TK đối ứng</div>
+        <div class="s">Điền trên Google Sheet</div>
+      </div>
+
+      <svg class="connectors" id="conn-all"></svg>
     </div>
   </div>
 
@@ -263,25 +218,10 @@
     <div class="legend-item"><span class="swatch" style="background:var(--teal-fill);border:1px solid var(--teal-line)"></span>Treasury</div>
     <div class="legend-item"><span class="swatch" style="background:var(--coral-fill);border:1px solid var(--coral-line)"></span>O2C</div>
     <div class="legend-item"><span class="swatch" style="background:var(--purple-fill);border:1px solid var(--purple-line)"></span>R2R</div>
-    <div class="legend-item">M/O/C/S/R + số = thứ tự bước, theo từng flow (Main, O2C hoàn tiền, Cash, Sale, Receipt)</div>
-    <div class="legend-item">┈┈► nét đứt = dùng chung box với main flow</div>
+    <div class="legend-item">M = luồng chính Cash Out, O/C = 2 nhánh ngoại lệ Cash Out, S/R = 2 nhánh Cash In. M4/M5/M6/End là các bước dùng chung cho tất cả.</div>
+    <div class="legend-item">┈┈► nét đứt = nhánh phụ / dùng chung box với main flow</div>
   </div>
 
-  <h2 class="section">Bảng thuật ngữ chuẩn</h2>
-  <table>
-    <tr><th>Thuật ngữ</th><th>Định nghĩa dùng chung trong flow</th></tr>
-    <tr><td>Controlling team</td><td>Team nghiệp vụ nhận nghĩa vụ thanh toán/thu, lập lịch (Payment/Receipt Schedule) gửi Treasury, và đối chiếu ERP–NetSuite trước khi gửi lịch cho R2R.</td></tr>
-    <tr><td>Treasury</td><td>Thực hiện giao dịch ngân hàng theo lịch nhận từ Controlling team; điền Bank + Payment/Receipt Date vào file và gửi lại Controlling team. Sau khi R2R import lên NetSuite, Treasury reconcile chung với sổ phụ ngân hàng — bao gồm cả khoản O2C book cho yêu cầu hoàn tiền, vì cùng nằm trên một sổ — rồi gửi email xác nhận cho R2R để đóng kỳ.</td></tr>
-    <tr><td>O2C</td><td>Sở hữu và book trực tiếp 2 trường hợp đặc thù, không qua R2R: Cash Sale (Cash In) và yêu cầu hoàn tiền (Cash Out exception).</td></tr>
-    <tr><td>R2R</td><td>Nhận lịch đã verify từ Controlling team, tạo file import lên NetSuite (NS); sau khi import xong, nhận xác nhận reconcile từ Treasury (đã gồm cả khoản O2C book) để đóng kỳ kế toán.</td></tr>
-    <tr><td>ERP</td><td>Hệ thống vận hành nội bộ riêng của công ty; các phiếu/giao dịch được đẩy (API) từ ERP sang NetSuite để hạch toán.</td></tr>
-    <tr><td>NS (NetSuite)</td><td>Phần mềm kế toán chính của công ty; là hệ thống đích mà Controlling team đối chiếu và R2R import file vào.</td></tr>
-    <tr><td>Chi tiền mặt (exception)</td><td>Với YCTT chi tiền mặt trong lịch nhận từ Controlling team, Treasury gửi riêng lệnh đó cho R2R book trước trên NetSuite; R2R gửi phiếu lại để Treasury in và ký nhận với người tạo YCTT, giao tiền mặt ngay. Việc book trước không thay đổi việc phải reconcile sổ phụ &amp; đóng kỳ chung với main flow vào cuối tháng.</td></tr>
-    <tr><td>Cash In — Doanh thu bán hàng</td><td>Treasury gửi file sổ phụ hàng ngày cho O2C đối chiếu với doanh thu cửa hàng; O2C book lên NetSuite theo tuần. Vẫn nằm chung sổ ngân hàng nên được Treasury reconcile chung với Other Cash In cuối tháng trước khi R2R đóng sổ.</td></tr>
-    <tr><td>Cash In — Other cash in</td><td>Các khoản tiền vào ngoài doanh thu bán hàng. Cuối tháng Treasury tổng hợp qua Google Sheet, báo Controlling team kiểm tra từng khoản và fill đối tượng + tài khoản đối ứng; Treasury khóa link, báo R2R lấy file book lên NetSuite.</td></tr>
-    <tr><td>Google Sheet cuối tháng</td><td>File tổng hợp giao dịch tiền vào ngoài doanh thu bán hàng do Treasury lập cuối tháng; Controlling team điền thông tin trực tiếp trên đó, Treasury khóa link sau khi hoàn tất để tránh chỉnh sửa thêm.</td></tr>
-    <tr><td>Reconcile sổ phụ (Cash In)</td><td>Dù book qua nhánh nào (doanh thu bán hàng hay other cash in), tất cả đều nằm chung sổ ngân hàng — Treasury reconcile chung cả 2 nguồn với sổ phụ cuối tháng; khớp rồi mới báo R2R đóng sổ, đây là điểm End duy nhất của Cash In.</td></tr>
-  </table>
 </div>
 
 <script>
@@ -299,7 +239,7 @@ function drawConnectors(gridId, svgId, edges){
     if (e.under) {
       const sx = a.left + a.width/2 - gr.left, sBottom = a.bottom - gr.top;
       const tx = b.left + b.width/2 - gr.left, tBottom = b.bottom - gr.top;
-      const channelY = gr.height - 6;
+      const channelY = Math.max(sBottom, tBottom) + 14;
       d = `M${sx} ${sBottom} V${channelY} H${tx} V${tBottom}`;
     } else if (e.over) {
       const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
@@ -310,6 +250,24 @@ function drawConnectors(gridId, svgId, edges){
       const sx = a.left + a.width/2 - gr.left, sBottom = a.bottom - gr.top;
       const ty = b.top + b.height/2 - gr.top, tx = b.left - gr.left;
       d = `M${sx} ${sBottom} V${ty} H${tx}`;
+    } else if (e.toTop) {
+      const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
+      const bx = b.left + b.width/2 - gr.left, topY = b.top - gr.top;
+      d = `M${x1} ${y1} H${bx} V${topY}`;
+    } else if (e.rightUnder) {
+      const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
+      const bx = b.left + b.width/2 - gr.left, bBottom = b.bottom - gr.top;
+      const channelY = Math.max(y1, bBottom) + 14;
+      d = `M${x1} ${y1} V${channelY} H${bx} V${bBottom}`;
+    } else if (e.downTop) {
+      const sx = a.left + a.width/2 - gr.left, sBottom = a.bottom - gr.top;
+      const bx = b.left + b.width/2 - gr.left, topY = b.top - gr.top;
+      const midY = sBottom + (topY - sBottom) / 2;
+      d = `M${sx} ${sBottom} V${midY} H${bx} V${topY}`;
+    } else if (e.topLeft) {
+      const sx = a.left + a.width/2 - gr.left, sTop = a.top - gr.top;
+      const tx = b.left - gr.left, ty = b.top + b.height/2 - gr.top;
+      d = `M${sx} ${sTop} V${ty} H${tx}`;
     } else {
       const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
       const x2 = b.left - gr.left, y2 = b.top + b.height/2 - gr.top;
@@ -323,33 +281,27 @@ function drawConnectors(gridId, svgId, edges){
 }
 
 function renderAll(){
-  drawConnectors('grid-out', 'conn-out', [
-    {from:'o-trig-main', to:'1.1'},
-    {from:'1.1', to:'2.1'},
-    {from:'2.1', to:'3', over:true},
-    {from:'2.1', to:'2.2', under:true,dashed:true},
-    {from:'2.2', to:'2.3', under:true,dashed:true},
-    {from:'3', to:'o-r2r-1'},
-    {from:'o-r2r-1', to:'o-tr-2'},
+  drawConnectors('grid-all', 'conn-all', [
+    {from:'o-trig-main', to:'M1'},
+    {from:'M1', to:'M2'},
+    {from:'M2', to:'M3', over:true},
+    {from:'M2', to:'C1', downTop:true, dashed:true},
+    {from:'C1', to:'C2', rightUnder:true, dashed:true},
+    {from:'M3', to:'M4', toTop:true},
+    {from:'M4', to:'o-tr-2'},
     {from:'o-tr-2', to:'o-r2r-2'},
     {from:'o-r2r-2', to:'o-end-main'},
-    {from:'o-trig-exc', to:'1.2',dashed:true},
-    {from:'1.2', to:'1.1', dashed:true},
-    {from:'2.1', to:'4.2', dashed:true},
-  ]);
-  drawConnectors('grid-cashin', 'conn-cashin', [
-    {from:'i-trig-sale', to:'1'},
-    {from:'1', to:'2', underLeft:true},
-    {from:'2', to:'cin-3'},
-    {from:'cin-3', to:'i-tr-3', dashed:true, under:true},
-    {from:'i-trig-other', to:'i-tr-1'},
-    {from:'i-tr-1', to:'i-ct-1'},
-    {from:'i-ct-1', to:'i-ct-2'},
-    {from:'i-ct-2', to:'i-tr-2'},
-    {from:'i-tr-2', to:'i-r2r-1'},
-    {from:'i-r2r-1', to:'i-tr-3'},
-    {from:'i-tr-3', to:'i-r2r-2'},
-    {from:'i-r2r-2', to:'i-end-cashin'},
+    {from:'o-trig-exc', to:'O1', dashed:true},
+    {from:'O1', to:'M1', dashed:true},
+    {from:'O1', to:'O2', dashed:true},
+    {from:'O2', to:'o-tr-2', topLeft:true, dashed:true},
+    {from:'i-trig-sale', to:'S1'},
+    {from:'S1', to:'S2'},
+    {from:'S2', to:'S3'},
+    {from:'S3', to:'o-tr-2', rightUnder:true},
+    {from:'i-trig-other', to:'R1', toTop:true},
+    {from:'R1', to:'R2', rightUnder:true},
+    {from:'R2', to:'M4', rightUnder:true},
   ]);
 }
 
