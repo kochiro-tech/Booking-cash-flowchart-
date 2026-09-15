@@ -306,6 +306,10 @@ function drawConnectors(gridId, svgId, edges){
       const tx = b.left + b.width/2 - gr.left, tTop = b.top - gr.top;
       const channelY = -14;
       d = `M${sx} ${sTop} V${channelY} H${tx} V${tTop}`;
+    } else if (e.underLeft) {
+      const sx = a.left + a.width/2 - gr.left, sBottom = a.bottom - gr.top;
+      const ty = b.top + b.height/2 - gr.top, tx = b.left - gr.left;
+      d = `M${sx} ${sBottom} V${ty} H${tx}`;
     } else {
       const x1 = a.right - gr.left, y1 = a.top + a.height/2 - gr.top;
       const x2 = b.left - gr.left, y2 = b.top + b.height/2 - gr.top;
@@ -335,7 +339,7 @@ function renderAll(){
   ]);
   drawConnectors('grid-cashin', 'conn-cashin', [
     {from:'i-trig-sale', to:'1'},
-    {from:'1', to:'2',under:true},
+    {from:'1', to:'2', underLeft:true},
     {from:'2', to:'cin-3'},
     {from:'cin-3', to:'i-tr-3', dashed:true, under:true},
     {from:'i-trig-other', to:'i-tr-1'},
